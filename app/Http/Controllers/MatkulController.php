@@ -16,4 +16,8 @@ class MatkulController extends Controller
             'kelas' => $kelas,
         ]);
     }
+
+    public function add() {
+        return view('matkul.add');
+    }
 }
