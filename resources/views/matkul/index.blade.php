@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <h3>Data Matakuliah dan kelas</h3>
+    @if (session('message'))
+      <div class="alert alert-success">
+          {{ session('message') }}
+      </div>
+    @endif
+    <a href="{{ URL::to('matkul/add')}}" class="btn btn-primary">Tambah Matkul</a>
     <ul>
     @foreach ($matkul as $item)
       <li> 
