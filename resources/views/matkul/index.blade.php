@@ -10,7 +10,8 @@
     <ul>
     @foreach ($matkul as $item)
       <li> 
-        {{ $item->kode_mk }} || {{ $item->nama_mk }} || {{ $item->sks }} SKS
+        {{ $item->kode_mk }} || {{ $item->nama_mk }} || {{ $item->sks }} SKS 
+        <button onclick="hapusMatakuliah({{$item->id}})" class="btn btn-danger btn-sm">hapus</button>
         <table class="table table-bordered table-sm">
           <thead>
             <tr>
@@ -64,4 +65,23 @@
         @endforeach
       </tbody>
     </table>
+@endsection
+@section('js')
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script lang="js">
+    function hapusMatakuliah(id) {
+      Swal.fire({
+        title: "Apakah anda yakin data ini dihapus?",
+        showCancelButton: true,
+        confirmButtonText: "Hapus",
+        denyButtonText: `Cancel`
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          window.location.href = '{{ URL::to("matkul/delete")}}/'+id;
+        }
+      });
+    }
+  </script>
 @endsection

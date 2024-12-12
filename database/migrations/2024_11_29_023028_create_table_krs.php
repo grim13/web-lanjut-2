@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('krs', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('kelas_id');
-            $table->bigInteger('mahasiswa_id');
+            $table->unsignedBigInteger('kelas_id');
+            $table->unsignedBigInteger('mahasiswa_id');
             $table->char('nilai_huruf',1);
             $table->integer('nilai_angka');
             $table->integer('bobot');

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('matkul_id');
+            $table->unsignedBigInteger('matkul_id');
             $table->char('kode_kelas',15);
             $table->char('hari',20);
             $table->time('jam_mulai');
