@@ -46,4 +46,24 @@ class MatkulController extends Controller
         //kirim pesan hapus berhasil
         return redirect()->route('matkul')->with('message', 'Data berhasil di hapus!');
     }
+
+    public function edit($id) {
+        $matkul = Matkul::find($id);
+        return view('matkul.edit',[
+            'matkul' => $matkul
+        ]);
+    }
+
+    public function editAction(Request $request, $id){
+        $matkul = Matkul::find($id);
+        $matkul->kode_mk = $request->kode_matkul;
+        $matkul->nama_mk = $request->nama_matkul;
+        $matkul->sks= $request->sks;
+        if (!$matkul->save()) {
+            //kirim pesan simpan gagal
+            return redirect()->route('matkul')->with('message', 'Data gagal disimpan!');
+        }
+        //kirim pesan simpan berhasil
+        return redirect()->route('matkul')->with('message', 'Data berhasil di simpan!');
+    }
 }

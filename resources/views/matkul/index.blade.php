@@ -12,6 +12,8 @@
       <li> 
         {{ $item->kode_mk }} || {{ $item->nama_mk }} || {{ $item->sks }} SKS 
         <button onclick="hapusMatakuliah({{$item->id}})" class="btn btn-danger btn-sm">hapus</button>
+         | 
+        <a href="{{URL::to('matkul/edit/'.$item->id)}}" class="btn btn-info btn-sm">edit</a>
         <table class="table table-bordered table-sm">
           <thead>
             <tr>
